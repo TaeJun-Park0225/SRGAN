@@ -56,7 +56,7 @@ def RGB2BGR(image):
 
 imgs = []
 mse = tf.losses.mean_squared_error
-bce = tf.losses.binary_crossentropy'
+bce = tf.losses.binary_crossentropy
 optim_g = tf.optimizers.Adam(lr_g, beta_1=0.9)
 optim_d = tf.optimizers.Adam(lr_d, beta_1=0.9)
 update_alternate = 0
