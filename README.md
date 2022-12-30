@@ -4,6 +4,18 @@ A Tenserflow implementation of SRGAN based on CVPR 2017 paper Photo-Realistic Si
 
 The train and val datasets are sampled from DIV2K. Train dataset has 800 images and tested with Set 5 dataset.
 
+![image](https://user-images.githubusercontent.com/79778595/210081306-be5392f8-353f-41c6-9d84-a4716b7e21d3.png)
+![image](https://user-images.githubusercontent.com/79778595/210081321-e55de866-b0ac-46d9-a66f-72cba553d292.png)
+![image](https://user-images.githubusercontent.com/79778595/210081263-6a4c5a45-c629-4d94-9ebd-046d5052582e.png)
+![image](https://user-images.githubusercontent.com/79778595/210081281-f3e4e7db-20f7-4d64-af62-6a84ed1203c3.png)
+![image](https://user-images.githubusercontent.com/79778595/210081339-a6f30373-37eb-48fa-8447-739e51a0df64.png)
+
+Warning!
+
+This result trained with very few images compate to other SRGAN.
+
+Please train whith enough before use this model.
+
 # Usage
 
 ## 1. Train 
