@@ -7,6 +7,7 @@ import os
 
 #load trained model / 학습된 이미지 불러오기
 Generator = tf.keras.models.load_model("Generator.h5")
+Generator.trainable = False
 Generator.summary()
 
 parser = argparse.ArgumentParser()

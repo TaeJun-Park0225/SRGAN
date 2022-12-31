@@ -105,11 +105,17 @@ for epoch in range(1, epochs+1):
                 optim_d.minimize(loss_d, Discriminator.trainable_variables, tape = tape)
                 update_alternate = 0
 
+            imgs_tensor_sr = imgs_tensor_sr.numpy()
+            imgs_tensor_sr = (imgs_tensor_sr + 1) / 2
+            imgs_tensor_sr[imgs_tensor_sr > 1] = 1
+            imgs_tensor_sr[imgs_tensor_sr < 0] = 0
+            imgs_tensor_hr = (imgs_tensor_hr + 1) / 2
+
             print("epochs:", epoch, ", step:", i, len(im_inx), ", G loss:", round(np.mean(loss_g),5), ", D loss:", round(np.mean(loss_d), 5))
             print("ssim:", np.mean(tf.image.ssim(imgs_tensor_sr, imgs_tensor_hr, max_val = 1).numpy()))
             print('--------------------------------------------------------------------------')
 
-            if iter_count % (batchs * 10):
+            if iter_count % (batchs * 10) == 0:
                 Generator.save('Generator.h5')
                 Discriminator.save('Discriminator.h5')
                 
