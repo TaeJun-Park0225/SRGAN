@@ -9,7 +9,7 @@ import os
 Generator = tf.keras.models.load_model("Generator.h5")
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--target_folder', required=False, default="./Set5/LRbicx3/", help='directory of image to process super resolution / super resolution 처리할 이미지 위치')
+parser.add_argument('--target_folder', required=False, default="./test/", help='directory of image to process super resolution / super resolution 처리할 이미지 위치')
 parser.add_argument('--save_folder', required=False, default="./SR_result/", help='directory to save super resoultion image / super resolution 처리된 이미지 저장 위치')
 args = parser.parse_args()
 target_folder, save_folder = args.target_folder, args.save_folder
