@@ -1,4 +1,5 @@
 #SRGAN
+
 A Tenserflow implementation of SRGAN based on CVPR 2017 paper Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network.
 
 The train and val datasets are sampled from DIV2K. Train dataset has 800 images and tested with Set 5 dataset.
