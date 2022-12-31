@@ -34,7 +34,8 @@ optional arguments:
 python test.py
 
 optional arguments:
---target_folder         directory of image to process super resolution / super resolution 처리할 이미지 위치
---save_folder           directory to save super resoultion image / super resolution 처리된 이미지 저장 위치
+
+    --target_folder         directory of image to process super resolution / super resolution 처리할 이미지 위치
+    --save_folder           directory to save super resoultion image / super resolution 처리된 이미지 저장 위치
 
 
