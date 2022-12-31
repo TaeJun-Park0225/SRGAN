@@ -4,6 +4,13 @@ A Tenserflow implementation of SRGAN based on CVPR 2017 paper Photo-Realistic Si
 
 The train and val datasets are sampled from DIV2K. Train dataset has 800 images and tested with Set 5 dataset.
 
+Enviroment
+
+    python          3.9.13
+    tensorflow      2.11.0
+    numpy           1.21.5
+    opencv-python   4.6.0.66
+    
 # Usage
 
 
