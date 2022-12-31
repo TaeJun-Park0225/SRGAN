@@ -1,13 +1,13 @@
-#SRGAN
+# SRGAN
 
 A Tenserflow implementation of SRGAN based on CVPR 2017 paper Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network.
 
 The train and val datasets are sampled from DIV2K. Train dataset has 800 images and tested with Set 5 dataset.
 
-#Usage
+# Usage
 
 
-##Train 
+## Train 
 
 Put train image dataset in ./train folder.
 
@@ -29,7 +29,7 @@ optional arguments:
     --load_model             load saved model / 저장된 모델 불러오기 (1: True, 0: False)
     --use_cpu                forced to use CPU only / CPU 만 이용해 학습하기 (1: True, 0: False)
 
-##Test Single Image
+## Test Single Image
 
 Put test image in ./test folder.
 
@@ -37,7 +37,7 @@ To train dataset type code below on your commend.
 
     python test.py
 
-The result will be saved in ./result folder.
+The result will be saved in ./SR result folder.
 
 optional arguments:
 
