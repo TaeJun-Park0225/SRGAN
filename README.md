@@ -37,7 +37,7 @@ To train dataset type code below on your commend.
 
     python test.py
 
-The result will be saved in ./SR result folder.
+The result will be saved in ./result folder.
 
 optional arguments:
 
