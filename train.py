@@ -115,7 +115,7 @@ for epoch in range(1, epochs+1):
             print("ssim:", np.mean(tf.image.ssim(imgs_tensor_sr, imgs_tensor_hr, max_val = 1).numpy()))
             print('--------------------------------------------------------------------------')
 
-            if iter_count % (batchs * 10) == 0:
+            if iter_count % 10 == 0:
                 Generator.save('Generator.h5')
                 Discriminator.save('Discriminator.h5')
                 
