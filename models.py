@@ -28,7 +28,7 @@ def get_generator(include_bn=True, separable_cnn=False):
     output = tf.keras.layers.PReLU(shared_axes=[1,2])(output)
     output_ = output
 
-    for _ in range(5): output = gen_block(output, include_bn, CNN)
+    for _ in range(16): output = gen_block(output, include_bn, CNN)
 
     output = CNN(64, 3, padding='same')(output)
     if include_bn: output = tf.keras.layers.BatchNormalization(renorm=True)(output)

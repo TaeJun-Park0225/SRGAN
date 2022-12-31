@@ -56,10 +56,11 @@ def RGB2BGR(image):
 
 imgs = []
 mse = tf.losses.mean_squared_error
-bce = tf.losses.binary_crossentropy'
+bce = tf.losses.binary_crossentropy
 optim_g = tf.optimizers.Adam(lr_g, beta_1=0.9)
 optim_d = tf.optimizers.Adam(lr_d, beta_1=0.9)
 update_alternate = 0
+iter_count = 1
 
 im_inx = list(map(lambda x: train_dir + x, os.listdir(train_dir)))
 for epoch in range(1, epochs+1):
@@ -104,10 +105,12 @@ for epoch in range(1, epochs+1):
                 optim_d.minimize(loss_d, Discriminator.trainable_variables, tape = tape)
                 update_alternate = 0
 
-
             print("epochs:", epoch, ", step:", i, len(im_inx), ", G loss:", round(np.mean(loss_g),5), ", D loss:", round(np.mean(loss_d), 5))
             print("ssim:", np.mean(tf.image.ssim(imgs_tensor_sr, imgs_tensor_hr, max_val = 1).numpy()))
             print('--------------------------------------------------------------------------')
 
-    Generator.save('Generator.h5')
-    Discriminator.save('Discriminator.h5')
+            if iter_count % (batchs * 10):
+                Generator.save('Generator.h5')
+                Discriminator.save('Discriminator.h5')
+                
+            iter_count += 1
