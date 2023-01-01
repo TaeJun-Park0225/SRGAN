@@ -110,7 +110,7 @@ for epoch in range(1, epochs+1):
 
             if update_alternate == 0:
                 optim_g.minimize(loss_g, Generator.trainable_variables, tape=tape)
-                if np.mean(hr_disc) >= 0.99 and np.mean(sr_disc) <= 0.01:
+                if np.mean(hr_disc) <= 0.97 and np.mean(sr_disc) >= 0.03:
                     update_alternate = 1
                 else:
                     print('--------------------------------------------------------------------------')
