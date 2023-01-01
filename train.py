@@ -98,13 +98,6 @@ for epoch in range(1, epochs+1):
                     loss_d = (bce(tf.zeros(shape = sr_disc.shape), sr_disc) + bce(tf.ones(shape = hr_disc.shape), hr_disc)) / 2
                     loss_d = tf.math.reduce_mean(loss_d)
 
-            if update_alternate == 0:
-                optim_g.minimize(loss_g, Generator.trainable_variables, tape=tape)
-                update_alternate = 1
-            else:
-                optim_d.minimize(loss_d, Discriminator.trainable_variables, tape = tape)
-                update_alternate = 0
-
             imgs_tensor_sr = imgs_tensor_sr.numpy()
             imgs_tensor_sr = (imgs_tensor_sr + 1) / 2
             imgs_tensor_sr[imgs_tensor_sr > 1] = 1
@@ -114,6 +107,18 @@ for epoch in range(1, epochs+1):
             print("epochs:", epoch, ", step:", i, len(im_inx), ", G loss:", round(np.mean(loss_g),5), ", D loss:", round(np.mean(loss_d), 5))
             print("ssim:", np.mean(tf.image.ssim(imgs_tensor_sr, imgs_tensor_hr, max_val = 1).numpy()))
             print('--------------------------------------------------------------------------')
+
+            if update_alternate == 0:
+                optim_g.minimize(loss_g, Generator.trainable_variables, tape=tape)
+                if np.mean(hr_disc) >= 0.99 and np.mean(sr_disc) <= 0.01:
+                    update_alternate = 1
+                else:
+                    print('--------------------------------------------------------------------------')
+                    print(f"Skip train of discriminator. \nDiscriminator doesn't need to train yet.\n{np.mean(hr_disc)}, {np.mean(sr_disc)} ")
+                    print('--------------------------------------------------------------------------')
+            else:
+                optim_d.minimize(loss_d, Discriminator.trainable_variables, tape = tape)
+                update_alternate = 0
 
             if iter_count % 10 == 0:
                 Generator.save('Generator.h5')
